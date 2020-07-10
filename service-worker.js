@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/meetup/precache-manifest.3b42133a2d7c03db4fc5722f3f6e6ed7.js"
+  "/meetup/precache-manifest.9a2042cbc3a92f5b4037916e09628896.js"
 );
 
 self.addEventListener('message', (event) => {
