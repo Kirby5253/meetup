@@ -110,3 +110,7 @@ input[type="number"] {
 .showEventsNumber {
 	width: 60px;
 }
+
+.event-description__details{
+	margin-top: 10px;
+}
