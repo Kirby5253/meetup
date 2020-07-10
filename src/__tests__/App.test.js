@@ -48,7 +48,7 @@ describe('<App /> integration', () => {
 	test('render correct list of events', () => {
 		const AppWrapper = mount(<App />);
 		AppWrapper.setState({ events: mockEvents.events });
-		expect(AppWrapper.find('.Event')).toHaveLength(20);
+		expect(AppWrapper.find('.Event')).toHaveLength(17);
 		AppWrapper.unmount(<App />);
 	})
 });
