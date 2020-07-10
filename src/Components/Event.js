@@ -45,11 +45,14 @@ class Event extends Component {
 							<li className="event-name__details">{event.name}</li>
 							<li className="event-group__details">{event.group.name}</li>
 							<li className="event-rsvp__details">{event.yes_rsvp_count} are going</li>
-							<li className="event-address__details">
-								{event.address_1}
+							
+							{event.venue ? <li className="event-address__details">
+								{event.venue.address_1}
 								<br />
-								{event.city}, {event.state} {event.zip}
-							</li>
+								{event.venue.city}, {event.venue.state} {event.venue.zip}
+							</li>: null}
+
+
 							<li className="event-description__details">{event.description}</li>
 							<li className="event-link__details">
 								<a href={event.link}>Event Link</a>
