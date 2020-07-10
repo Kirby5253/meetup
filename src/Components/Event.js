@@ -52,7 +52,7 @@ class Event extends Component {
 							</li>
 							<li className="event-description__details">{event.description}</li>
 							<li className="event-link__details">
-								<a href={event.link}> Event Link</a>
+								<a href={event.link}>Event Link</a>
 							</li>
 						</ul>
 						<button className="hide-detail-button" onClick={() => this.handleHideDetails()}>

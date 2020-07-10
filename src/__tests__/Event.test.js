@@ -1,15 +1,21 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Event from '../Components/Event';
+import { mockEvents } from '../mock-events';
 
 describe('<Event /> component', () => {
   let EventWrapper;
   beforeAll(() => {
-    EventWrapper = shallow(<Event />)
-  })
+    EventWrapper = shallow(<Event event={mockEvents.events[0]} />);
+  });
+
 
   test('event card hides details by default', () => {
     expect(EventWrapper.state('showDetails')).toBe(false);
+  });
+
+  test('render event element with hidden details', () => {
+    expect(EventWrapper.find('.Event')).toHaveLength(1);
   });
 
   test('render event card with hidden details', () => {
