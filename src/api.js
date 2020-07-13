@@ -28,31 +28,37 @@ async function getSuggestions(query) {
 
 	const token = await getAccessToken();
 	if (token) {
-		const url = 'https://api.meetup.com/find/locations?&sign=true&photo-host=public&query='
-		+ query
-		+ '&access_token=' + token;
-		
+		const url =
+			'https://api.meetup.com/find/locations?&sign=true&photo-host=public&query=' +
+			query +
+			'&access_token=' +
+			token;
+
 		const result = await axios.get(url);
-		return result.data
+		return result.data;
 	}
 	return [];
 }
 
-async function getEvents(lat, lon) {
+async function getEvents(lat, lon, page) {
 	if (window.location.href.startsWith('http://localhost')) {
-    return mockEvents.events;
+		return mockEvents.events;
 	}
 
 	const token = await getAccessToken();
 	if (token) {
-		let url = 'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public'
-		+ '&access_token=' + token;
+		let url =
+			'https://api.meetup.com/find/upcoming_events?&sign=true&photo-host=public' +
+			'&access_token=' +
+			token +
+			'&page=' +
+			page;
 
 		// lat, lon is optional if you have it, you can add them
 		if (lat && lon) {
 			url += '&lat=' + lat + '&lon=' + lon;
 		}
-		
+
 		const result = await axios.get(url);
 		return result.data.events;
 	}
@@ -87,11 +93,9 @@ async function getOrRenewAccessToken(type, key) {
 	let url;
 	if (type === 'get') {
 		// Lambda endpoint to get token by code
-		url = 'https://hjb8eyy2cg.execute-api.us-east-1.amazonaws.com/dev/api/token/'
-		+ key;
+		url = 'https://hjb8eyy2cg.execute-api.us-east-1.amazonaws.com/dev/api/token/' + key;
 	} else if (type === 'renew') {
-		url = 'https://hjb8eyy2cg.execute-api.us-east-1.amazonaws.com/dev/api/'
-		+ key;
+		url = 'https://hjb8eyy2cg.execute-api.us-east-1.amazonaws.com/dev/api/' + key;
 	}
 
 	// Use axios to make a GET request to endpoint
@@ -99,7 +103,7 @@ async function getOrRenewAccessToken(type, key) {
 
 	// Save tokens to localStorage together with a timestamp
 	localStorage.setItem('access_token', tokenInfo.data.access_token);
-	localStorage.setItem('refresh_token', tokenInfo.data.refresh_token)
+	localStorage.setItem('refresh_token', tokenInfo.data.refresh_token);
 	localStorage.setItem('last-saved-time', Date.now());
 
 	// Return the access_token

@@ -2,6 +2,7 @@ import React from 'react';
 import { shallow, mount } from 'enzyme';
 import App from '../App';
 import EventList from '../Components/EventList';
+import Event from '../Components/Event';
 import CitySearch from '../Components/CitySearch';
 import NumberOfEvents from '../Components/NumberOfEvents';
 import { mockEvents } from '../mock-events';
@@ -23,6 +24,10 @@ describe('<App /> component', () => {
 
 	test('render number of events', () => {
 		expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
+	});
+
+	test('event numbers state defaults to 32', () => {
+		expect(AppWrapper.state('eventsNumber')).toBe('32');
 	});
 });
 
@@ -50,5 +55,22 @@ describe('<App /> integration', () => {
 		AppWrapper.setState({ events: mockEvents.events });
 		expect(AppWrapper.find('.Event')).toHaveLength(17);
 		AppWrapper.unmount(<App />);
-	})
+	});
+
+	test('change state when text input changes', () => {
+		const AppWrapper = mount(<App />);
+		AppWrapper.setState({ events: mockEvents.events });
+		const NumberOfEventsWrapper = AppWrapper.find(NumberOfEvents);
+		const eventObject = { target: { value: '12' } };
+		NumberOfEventsWrapper.find('.showEventsNumber').simulate('change', eventObject);
+		AppWrapper.instance().updateEventsNumber(12);
+		AppWrapper.instance().forceUpdate();
+		const EventListWrapper = mount(
+			<EventList events={mockEvents.events.slice(0, AppWrapper.state('eventsNumber'))} />
+		);
+		expect(AppWrapper.state('eventsNumber')).toBe(12);
+		expect(EventListWrapper.find('.Event')).toHaveLength(12);
+		AppWrapper.unmount(<App />);
+		EventListWrapper.unmount(<EventList />);
+	});
 });
