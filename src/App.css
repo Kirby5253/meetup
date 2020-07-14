@@ -35,6 +35,12 @@ input[type="number"] {
 .CitySearch {
 	display: flex;
 	flex-direction: column;
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 9;
+	margin-top: 20px;
 }
 
 .suggestions {
@@ -103,7 +109,7 @@ input[type="number"] {
 
 .numberOfEvents {
 	/* width: 80px; */
-	margin: 20px 0 50px;
+	margin: 50px 0 10px;
 	/* text-align: right; */
 }
 
@@ -111,6 +117,6 @@ input[type="number"] {
 	width: 60px;
 }
 
-.event-description__details{
+.event-description__details {
 	margin-top: 10px;
 }

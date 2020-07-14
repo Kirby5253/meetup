@@ -28,7 +28,7 @@ class Event extends Component {
 							<li className="event-group">{event.group.name}</li>
 							<li className="event-rsvp">{event.yes_rsvp_count} are going</li>
 						</ul>
-						<button className="show-detail-button" onClick={() => this.handleShowDetails()}>
+						<button className="show-detail-button details-btn" onClick={() => this.handleShowDetails()}>
 							Details
 						</button>
 					</div>
@@ -62,7 +62,7 @@ class Event extends Component {
 								<a href={event.link}>Event Link</a>
 							</li>
 						</ul>
-						<button className="hide-detail-button" onClick={() => this.handleHideDetails()}>
+						<button className="hide-detail-button details-btn" onClick={() => this.handleHideDetails()}>
 							Less Details
 						</button>
 					</div>
