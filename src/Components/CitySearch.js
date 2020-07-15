@@ -21,7 +21,12 @@ class CitySearch extends Component {
 	render() {
 		return (
 			<div className="CitySearch">
-				<input type="text" className="city" value={this.state.query} onChange={this.handleInputChanged} />
+				<input 
+					placeholder="Search by City or Zip Code" 
+					type="text" 
+					className="city" 
+					value={this.state.query} 
+					onChange={this.handleInputChanged} />
 				<ul className="suggestions">
 					{this.state.suggestions.map((item) => (
 						<li
