@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 class Event extends Component {
 	state = {
-		showDetails: false,
+		showDetails: false
 	};
 
 	handleShowDetails = () => {
@@ -14,7 +14,7 @@ class Event extends Component {
 	};
 
 	render() {
-    const {event} = this.props;
+		const { event } = this.props;
 
 		if (!this.state.showDetails) {
 			return (
@@ -47,17 +47,22 @@ class Event extends Component {
 							<li className="event-rsvp__details">{event.yes_rsvp_count} are going</li>
 							{event.venue ? (
 								<li className="event-address__details">
-								{event.venue.name && event.venue.name !== event.venue.address_1? (<span>{event.venue.name}</span>): null}
-								<br/>
-								{event.venue.address_1? (<span>{event.venue.address_1}</span>): null}
-								<br />
-								{event.venue.city ? (<span>{event.venue.city}</span>): null}
-								{event.venue.city && event.venue.state ? (<span>, </span>):null} 
-								{event.venue.state ? (<span>{event.venue.state} </span>): null} 
-								{event.venue.zip ? (<span>{event.venue.zip}</span>): null}
-								</li>):null
-							}
-							<li className="event-description__details">{event.description}</li>
+									{event.venue.name && event.venue.name !== event.venue.address_1 ? (
+										<span>{event.venue.name}</span>
+									) : null}
+									<br />
+									{event.venue.address_1 ? <span>{event.venue.address_1}</span> : null}
+									<br />
+									{event.venue.city ? <span>{event.venue.city}</span> : null}
+									{event.venue.city && event.venue.state ? <span>, </span> : null}
+									{event.venue.state ? <span>{event.venue.state} </span> : null}
+									{event.venue.zip ? <span>{event.venue.zip}</span> : null}
+								</li>
+							) : null}
+							<li
+								className="event-description__details"
+								dangerouslySetInnerHTML={{ __html: event.description }}
+							/>
 							<li className="event-link__details">
 								<a href={event.link}>Event Link</a>
 							</li>
