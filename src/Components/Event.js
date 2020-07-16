@@ -64,7 +64,7 @@ class Event extends Component {
 								dangerouslySetInnerHTML={{ __html: event.description }}
 							/>
 							<li className="event-link__details">
-								<a href={event.link}>Event Link</a>
+								<a href={event.link} target="_blank" rel="noopener noreferrer">Event Link</a>
 							</li>
 						</ul>
 						<button className="hide-detail-button details-btn" onClick={() => this.handleHideDetails()}>

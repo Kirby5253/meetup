@@ -24,8 +24,7 @@ class NumberOfEvents extends Component {
 	render() {
 		return (
 			<div className="numberOfEvents">
-				<ErrorAlert text = {this.state.infoText} />
-				Show{' '}
+				<label >Show{' '}
 				<input
 					type="number"
 					min="0"
@@ -33,7 +32,8 @@ class NumberOfEvents extends Component {
 					value={this.props.eventsNumber}
 					onChange={this.handleInputChanged}
 				/>{' '}
-				Events
+				Events</label>
+				<ErrorAlert  text = {this.state.infoText} />
 			</div>
 		);
 	}

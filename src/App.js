@@ -8,7 +8,8 @@ import { getEvents } from './api';
 class App extends Component {
 	state = {
 		events: [],
-		eventsNumber: '32'
+		eventsNumber: '32',
+		infoText: ''
 	};
 
 	updateEvents = (lat, lon) => {
@@ -18,6 +19,11 @@ class App extends Component {
 
 	componentDidMount() {
 		this.updateEvents();
+		if(!navigator.onLine) {
+			this.setState({
+				infoText: 'You appear to be offline. Be aware that current events may not be up to date. Search will be available again once connection is established.'
+			})
+		}
 	}
 
 	updateEventsNumber = (number) => {
@@ -29,6 +35,7 @@ class App extends Component {
 			<div className="App">
 				<CitySearch updateEvents={this.updateEvents} />
 				<NumberOfEvents eventsNumber={this.state.eventsNumber} updateEventsNumber={this.updateEventsNumber} />
+				{this.state.infoText.length > 1 ? (<div id="alert-offline" >{this.state.infoText}</div>): null}
 				<EventList events={this.state.events.slice(0, this.state.eventsNumber)} />
 			</div>
 		);
