@@ -36,7 +36,7 @@ class CitySearch extends Component {
 			<div className="CitySearch">
 				<label htmlFor="city-search" >Search for Events by City Name</label>
 				<input 
-					placeholder="Search by City" 
+					placeholder="City Name" 
 					type="text" 
 					className="city" 
 					id="city-search"

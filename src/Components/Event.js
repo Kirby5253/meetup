@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import RSVPChart from './RSVPChart';
+
 
 class Event extends Component {
 	state = {
@@ -13,6 +15,13 @@ class Event extends Component {
 		this.setState({ showDetails: false });
 	};
 
+	getDataForPie = (event) => {
+		const data = [];
+		data.push({ name: "Reservations" ,  value: event.yes_rsvp_count}, {name: "Free Slots Available", value: event.rsvp_limit - event.yes_rsvp_count})
+		console.log(data);
+	}
+	
+
 	render() {
 		const { event } = this.props;
 
@@ -26,7 +35,9 @@ class Event extends Component {
 							</li>
 							<li className="event-name">{event.name}</li>
 							<li className="event-group">{event.group.name}</li>
-							<li className="event-rsvp">{event.yes_rsvp_count} are going</li>
+							<li className="event-rsvp">{event.yes_rsvp_count} are going
+							{event.rsvp_limit ? <p className="event-rsvp">Limited space, click details for availability!</p>: null}
+							</li>
 						</ul>
 						<button className="show-detail-button details-btn" onClick={() => this.handleShowDetails()}>
 							Details
@@ -44,7 +55,10 @@ class Event extends Component {
 							</li>
 							<li className="event-name__details">{event.name}</li>
 							<li className="event-group__details">{event.group.name}</li>
-							<li className="event-rsvp__details">{event.yes_rsvp_count} are going</li>
+							{event.rsvp_limit? 
+								<li><RSVPChart event={this.props.event} /></li>
+								:<li className="event-rsvp">{event.yes_rsvp_count} are going</li>
+							}
 							{event.venue ? (
 								<li className="event-address__details">
 									{event.venue.name && event.venue.name !== event.venue.address_1 ? (
