@@ -109,7 +109,7 @@ input[type="number"] {
 	padding: 5px 8px;
 	border-radius: 10px;
 	cursor: pointer;
-	background-color: #17252a;
+	background-color: #17252aa2;
 	color: #def2f1;
 }
 
@@ -201,15 +201,20 @@ input[type="number"] {
 	margin-top: 60px;
 }
 
-.event-link__details {
-	margin-top: 10px;
+a {
+	color: #feffff;
 }
 
-a {
+.event-link__details {
 	color: black;
 	background-color: #def2f1;
-	padding: 3px;
+	padding: 5px 8px;
 	border-radius: 6px;
+	margin-top: 20px;
+}
+
+.event-link {
+	margin-top: 20px;
 }
 
 @media all and (min-width: 1500px) {
