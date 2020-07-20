@@ -113,10 +113,10 @@ input[type="number"] {
 	color: #def2f1;
 }
 
-.show-detail-button:hover,
+/* .show-detail-button:hover,
 .hide-detail-button:hover {
 	opacity: 80%;
-}
+} */
 
 .event-name,
 .event-name__details {
