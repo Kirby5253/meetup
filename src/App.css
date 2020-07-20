@@ -9,7 +9,7 @@
 	padding: 7% 5%;
 	color: #feffff;
 	width: 80%;
-  max-width: 1000px;
+	max-width: 1000px;
 }
 
 .App * {
@@ -135,6 +135,10 @@ input[type="number"] {
 	font-style: italic;
 }
 
+.event-rsvp__limited {
+	margin-bottom: 17px;
+}
+
 .event-description__details {
 	overflow-x: hidden;
 }
@@ -225,7 +229,7 @@ a {
 
 @media all and (max-width: 1000px) {
 	.data-event {
-    margin-top: 170px;
+		margin-top: 170px;
 	}
 	.app-title {
 		font-size: 30px;
@@ -237,6 +241,6 @@ a {
 
 @media all and (max-width: 680px) {
 	.data-event {
-    margin-top: 200px;
-  }
+		margin-top: 200px;
+	}
 }

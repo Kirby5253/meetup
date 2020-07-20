@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import RSVPChart from './RSVPChart';
 
-
 class Event extends Component {
 	state = {
 		showDetails: false
@@ -17,10 +16,12 @@ class Event extends Component {
 
 	getDataForPie = (event) => {
 		const data = [];
-		data.push({ name: "Reservations" ,  value: event.yes_rsvp_count}, {name: "Free Slots Available", value: event.rsvp_limit - event.yes_rsvp_count})
+		data.push(
+			{ name: 'Reservations', value: event.yes_rsvp_count },
+			{ name: 'Free Slots Available', value: event.rsvp_limit - event.yes_rsvp_count }
+		);
 		console.log(data);
-	}
-	
+	};
 
 	render() {
 		const { event } = this.props;
@@ -35,8 +36,13 @@ class Event extends Component {
 							</li>
 							<li className="event-name">{event.name}</li>
 							<li className="event-group">{event.group.name}</li>
-							<li className="event-rsvp">{event.yes_rsvp_count} are going
-							{event.rsvp_limit ? <p className="event-rsvp">Limited space, click details for availability!</p>: null}
+							<li className="event-rsvp">
+								{event.yes_rsvp_count} are going
+								{event.rsvp_limit ? (
+									<p className="event-rsvp__limited">
+										Limited space, click details for availability!
+									</p>
+								) : null}
 							</li>
 						</ul>
 						<button className="show-detail-button details-btn" onClick={() => this.handleShowDetails()}>
@@ -55,10 +61,13 @@ class Event extends Component {
 							</li>
 							<li className="event-name__details">{event.name}</li>
 							<li className="event-group__details">{event.group.name}</li>
-							{event.rsvp_limit? 
-								<li><RSVPChart event={this.props.event} /></li>
-								:<li className="event-rsvp">{event.yes_rsvp_count} are going</li>
-							}
+							{event.rsvp_limit ? (
+								<li>
+									<RSVPChart event={this.props.event} />
+								</li>
+							) : (
+								<li className="event-rsvp">{event.yes_rsvp_count} are going</li>
+							)}
 							{event.venue ? (
 								<li className="event-address__details">
 									{event.venue.name && event.venue.name !== event.venue.address_1 ? (
@@ -78,7 +87,14 @@ class Event extends Component {
 								dangerouslySetInnerHTML={{ __html: event.description }}
 							/>
 							<li className="event-link">
-								<a className="event-link__details" href={event.link} target="_blank" rel="noopener noreferrer">Event Link</a>
+								<a
+									className="event-link__details"
+									href={event.link}
+									target="_blank"
+									rel="noopener noreferrer"
+								>
+									Event Link
+								</a>
 							</li>
 						</ul>
 						<button className="hide-detail-button details-btn" onClick={() => this.handleHideDetails()}>

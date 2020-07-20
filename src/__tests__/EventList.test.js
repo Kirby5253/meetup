@@ -6,8 +6,7 @@ import { mockEvents } from '../mock-events';
 
 describe('<EventList /> component', () => {
 	test('render correct number of events', () => {
-		const EventListWrapper = shallow(<EventList 
-			events={mockEvents.events} />);
-		expect(EventListWrapper.find(Event)).toHaveLength(17);
+		const EventListWrapper = shallow(<EventList events={mockEvents.events} />);
+		expect(EventListWrapper.find(Event)).toHaveLength(18);
 	});
 });
